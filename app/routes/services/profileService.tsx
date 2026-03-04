@@ -1,6 +1,6 @@
 "use client";
 
-import Profile from "../page/profile.page";
+import Profile from "../page/profilePage";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
