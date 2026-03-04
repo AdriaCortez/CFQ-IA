@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import  Cadastro from '../layout/subscribe.form'
+import  Cadastro from '../layout/subscribeForm'
 
 export default function Subscribe() {
 

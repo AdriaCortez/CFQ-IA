@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import ChangePassword from "../layout/changePassword.form";
+import ChangePassword from "../layout/changePasswordForm";
 
 export default function AlterarSenha() {
 

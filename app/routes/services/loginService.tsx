@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import Login from '../layout/login.form';
+import Login from '../layout/loginForm';
 
 export default function Enter() {
 

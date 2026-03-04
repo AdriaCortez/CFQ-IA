@@ -10,6 +10,7 @@ dotenv.config();
 const app = express(); 
 const port = 3701; 
 
+const KEY = process.env.GEPETO_API_KEY;
 const TOKEN = process.env.GEPETO_API_AUTH_TOKEN;
 const uri = process.env.MONGO_URI_GEPETO;
 const access = process.env.ACCESS_TOKEN_TEST;
@@ -48,7 +49,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   origin: [ 
-    "http://localhost:5173",
+    "http://localhost:517",
     "http://localhost:3701",
     "http://localhost",
 

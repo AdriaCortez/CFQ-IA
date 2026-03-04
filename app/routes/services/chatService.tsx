@@ -4,7 +4,7 @@
 //Código para colocar as chaves da API do chatGPT.
 import { useEffect } from 'react'
 import { useState } from 'react';
-import Chat from '../layout/chat.layout';
+import Chat from '../layout/chatLayout';
 import { useNavigate, useLocation } from "react-router";
 import { aviso } from '~/alertas/swal';
 
