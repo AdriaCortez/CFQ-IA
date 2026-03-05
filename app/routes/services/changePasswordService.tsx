@@ -13,7 +13,7 @@ export default function AlterarSenha() {
   
   const navigate = useNavigate();
 
-  const trocarsenha = async (e: React.FormEvent) => {
+  const trocarsenha = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
     if (novasenha !== confirmarsenha) {

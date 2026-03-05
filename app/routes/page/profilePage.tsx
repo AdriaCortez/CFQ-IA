@@ -15,6 +15,8 @@ export default function Profile (config: any) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  console.log("Usuario no perfil", user)
+
   return (
     <div className="flex flex-col h-screen bg-black text-gray-100 font-sans overflow-hidden">
       
@@ -25,7 +27,7 @@ export default function Profile (config: any) {
         className="py-4 border-b border-gray-800 bg-black/50 backdrop-blur-md sticky top-0 z-10 flex items-center justify-center px-4"
       >
         <button 
-          onClick={() => navigate(`/chat?user=${user?.id}`)}
+          onClick={() => navigate(`/chat?user=${user?._id}`)}
           className="absolute left-4 p-2 text-gray-400 hover:text-blue-500 hover:bg-gray-900 rounded-full transition-all group"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 transform group-hover:-translate-x-1 transition-transform">

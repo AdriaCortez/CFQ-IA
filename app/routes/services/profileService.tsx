@@ -18,11 +18,14 @@ export default function Perfil() {
                 });
 
                 const data = await validation.json();
-                setUser(data.user);
 
-                if(!data.user) {
+                console.log("Usuario no perfil:", data)
+                setUser(data);
+
+                 if(!data || !data._id) {
                     navigate("/enter")
                 }
+
 
             } catch (err) {
                 alert("Opa! Algo na validação deu errado")
@@ -64,7 +67,7 @@ export default function Perfil() {
         uri.searchParams.delete(data);
 
         console.log("Conta deletada com sucesso:", data); } catch (err) { 
-            console.log("Ocorreu algum erro ao deletar conta", err);
+        console.log("Ocorreu algum erro ao deletar conta", err);
 
         }
         
