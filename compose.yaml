@@ -24,7 +24,7 @@ services:
     ports:
       - "3701:3701"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/gepeto
+      - MONGO_URI_GEPETO=mongodb://mongo:27017/gepeto
       - GEPETO_API_AUTH_TOKEN=${GEPETO_API_AUTH_TOKEN}
     env_file:
       - .env

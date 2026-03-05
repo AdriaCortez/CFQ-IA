@@ -19,13 +19,14 @@ export default function ChatService() {
 
     useEffect(() => { //useEffect pra rodar só quando o código for montado.
 
-        aviso('');
+        const iniciar = async () => {
 
-        Validacao();
+            aviso('');
+            await Validacao();
 
-        if(user) {
-            Historico();
-        }
+        };
+
+        iniciar();
     
     }, []);
 
@@ -40,11 +41,22 @@ export default function ChatService() {
         }); 
 
         const validado = await validar.json()
-        console.log("O usuário foi validado", validado)
+        console.log("O usuário foi validado:", validado)
+        console.log("tipo:", typeof validado)
+
+        if(validado){
+            setUser(validado);
+            return true;
+
+        } else {
+            alert ("Ops! Ocorreu um erro na validação do usuário. Tente novamente!")
+            navigate("/login")
+        };
 
 
     } catch (error) {
         alert("Opa, esse usuário não está logado ou não foi encontrado, tente novamente" + error)
+        navigate("/login")
         console.log("Erro, verifique o servidor ou a autenticaçõ de usuário")
     }
    } 

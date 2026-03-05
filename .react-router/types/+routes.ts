@@ -26,40 +26,48 @@ type Pages = {
   "/chat": {
     params: {};
   };
+  "/perfil": {
+    params: {};
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/enter" | "/login" | "/subscribe" | "/chat";
+    page: "/" | "/enter" | "/login" | "/subscribe" | "/chat" | "/perfil";
   };
   "routes/index.tsx": {
     id: "routes/index";
     page: "/";
   };
-  "routes/page/start.page.tsx": {
-    id: "routes/page/start.page";
+  "routes/page/startPage.tsx": {
+    id: "routes/page/startPage";
     page: "/enter";
   };
-  "routes/services/login.service.tsx": {
-    id: "routes/services/login.service";
+  "routes/services/loginService.tsx": {
+    id: "routes/services/loginService";
     page: "/login";
   };
-  "routes/services/subscribe.service.tsx": {
-    id: "routes/services/subscribe.service";
+  "routes/services/subscribeService.tsx": {
+    id: "routes/services/subscribeService";
     page: "/subscribe";
   };
-  "routes/services/chat.service.tsx": {
-    id: "routes/services/chat.service";
+  "routes/services/chatService.tsx": {
+    id: "routes/services/chatService";
     page: "/chat";
+  };
+  "routes/services/profileService.tsx": {
+    id: "routes/services/profileService";
+    page: "/perfil";
   };
 };
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
   "routes/index": typeof import("./app/routes/index.tsx");
-  "routes/page/start.page": typeof import("./app/routes/page/startPage.js");
-  "routes/services/login.service": typeof import("./app/routes/services/loginService.js");
-  "routes/services/subscribe.service": typeof import("./app/routes/services/subscribeService.js");
-  "routes/services/chat.service": typeof import("./app/routes/services/chatService.js");
+  "routes/page/startPage": typeof import("./app/routes/page/startPage.tsx");
+  "routes/services/loginService": typeof import("./app/routes/services/loginService.tsx");
+  "routes/services/subscribeService": typeof import("./app/routes/services/subscribeService.tsx");
+  "routes/services/chatService": typeof import("./app/routes/services/chatService.tsx");
+  "routes/services/profileService": typeof import("./app/routes/services/profileService.tsx");
 };

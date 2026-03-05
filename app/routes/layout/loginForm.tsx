@@ -14,7 +14,6 @@ export default function Login(config: any) {
   return (
     <div className="min-h-screen bg-black text-gray-100 font-sans flex flex-col items-center justify-center p-6 relative overflow-hidden">
       
-      {/* Efeito de luz de fundo (Glow) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
 
       <motion.section 

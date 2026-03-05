@@ -17,7 +17,7 @@ export default function Chat(Message: any) {
     } = Message;
 
     const [showLogout, setShowLogout] = useState(false);
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da Sidebar
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
         <div className="flex h-screen bg-black text-gray-100 font-sans overflow-hidden">
@@ -27,7 +27,7 @@ export default function Chat(Message: any) {
                     <>
                         <motion.div 
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
+                            animate={{ opacity: 0.8 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsSidebarOpen(false)}
                             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
@@ -51,7 +51,6 @@ export default function Chat(Message: any) {
 
                             <div className="flex-1 overflow-y-auto space-y-3 pr-2 custom-scrollbar">
                                 {Mensagem.length > 0 ? (
-                                    // Filtra apenas mensagens do usuário para servir de "título" no histórico
                                     Mensagem.filter((m: any) => m.autor === "user").map((msg: any, i: number) => (
                                         <div key={i} className="p-3 bg-gray-900/50 border border-gray-800 rounded-xl hover:border-blue-500/50 transition-colors cursor-pointer group">
                                             <p className="text-xs text-gray-500 mb-1">Chat #{i + 1}</p>
@@ -75,7 +74,6 @@ export default function Chat(Message: any) {
                 )}
             </AnimatePresence>
 
-            {/* --- CONTEÚDO PRINCIPAL --- */}
             <div className="flex-1 flex flex-col h-full relative">
                 
                 <motion.header 
@@ -84,7 +82,6 @@ export default function Chat(Message: any) {
                     transition={{ duration: 0.8 }}
                     className="py-4 border-b border-gray-800 bg-black/50 backdrop-blur-md sticky top-0 z-10 flex items-center justify-center px-4"
                 >
-                    {/* Botão Hamburger (Abre Sidebar) */}
                     <button 
                         onClick={() => setIsSidebarOpen(true)}
                         className="absolute left-16 p-2 text-gray-400 hover:text-blue-500 hover:bg-gray-900 rounded-lg transition-all"
@@ -157,13 +154,13 @@ export default function Chat(Message: any) {
                     </div>
                 </motion.header>
 
-                <main className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide">
-                    <section className="max-w-3xl mx-auto flex flex-col space-y-4">
+                {/* --- CONTAINER DE MENSAGENS COM AUTO-SCROLL (CSS ONLY) --- */}
+                <main className="flex-1 overflow-y-auto p-4 scrollbar-hide flex flex-col-reverse">
+                    <section className="max-w-3xl mx-auto w-full flex flex-col space-y-4">
                         {Mensagem.length === 0 && (
                             <motion.div 
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 1 }}
                                 className="text-center py-20 text-gray-600"
                             >
                                 <p className="text-lg">Como posso te ajudar hoje?</p>
@@ -173,8 +170,8 @@ export default function Chat(Message: any) {
                         {Mensagem.map((msg: any, index: number) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: msg.autor === "user" ? 20 : -20 }}
-                                animate={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 className={`flex ${msg.autor === "user" ? "justify-end" : "justify-start"}`}
                             >
                                 <div
@@ -185,36 +182,43 @@ export default function Chat(Message: any) {
                                     }`}
                                 >
                                     <p className="text-sm font-semibold mb-1 opacity-70">
-                                        {msg.autor === "user" ? "Você" : "Heisenberg"}
+                                        {msg.autor === "user" ? "Você" : "Dalton"}
                                     </p>
-                                    <span className="text-[15px]">{msg.texto}</span>
+                                    <span className="text-[15px] whitespace-pre-wrap">{msg.texto}</span>
                                 </div>
                             </motion.div>
                         ))}
                     </section>
                 </main>
 
+                {/* --- FOOTER COM TEXTAREA EXPANSÍVEL (CSS ONLY) --- */}
                 <motion.footer 
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
                     className="p-4 bg-gradient-to-t from-black via-black to-transparent"
                 >
                     <form 
                         onSubmit={Submit} 
-                        className="max-w-3xl mx-auto relative flex items-center gap-2"
+                        className="max-w-3xl mx-auto relative flex items-end gap-2 bg-gray-900 border border-gray-800 rounded-[26px] p-2 focus-within:ring-2 focus-within:ring-blue-600 transition-all shadow-2xl"
                     >
-                        <input 
-                            type="text" 
+                        <textarea 
                             value={campoDigitado} 
                             onChange={(e) => setCampoDigitado(e.target.value)} 
-                            placeholder="Mande uma mensagem para o Heisenberg..." 
-                            className="w-full bg-gray-900 border border-gray-800 text-white px-6 py-4 pr-16 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-600 shadow-2xl text-base"
+                            placeholder="Mande uma mensagem para Dalton..." 
+                            rows={1}
+                            style={{ fieldSizing: 'content' } as any}
+                            className="w-full bg-transparent text-white px-4 py-3 min-h-[44px] max-h-[200px] resize-none focus:outline-none placeholder:text-gray-600 text-base custom-scrollbar"
                             required
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    e.preventDefault();
+                                    e.currentTarget.form?.requestSubmit();
+                                }
+                            }}
                         />
                         <button 
                             type="submit" 
-                            className="absolute right-2 p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all shadow-lg"
+                            className="mb-1 mr-1 p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all shadow-lg flex-shrink-0"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />

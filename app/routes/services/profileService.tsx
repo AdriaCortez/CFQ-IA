@@ -4,7 +4,7 @@ import Profile from "../page/profilePage";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
-export function Perfil() {
+export default function Perfil() {
 
     const [user, setUser] = useState<any>(null);
     

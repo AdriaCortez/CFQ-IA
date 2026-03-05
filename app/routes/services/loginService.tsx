@@ -31,7 +31,7 @@ export default function Enter() {
   navigate("/chat", { state: { user } });
 }
 
-   const HandleAuth = async (e: React.FormEvent) => {
+   const HandleAuth = async (e: React.SubmitEvent) => {
     e.preventDefault()
 
     try { console.log('Verificando credenciais...')

@@ -63,7 +63,7 @@ export default function HomePage() {
           transition={{ repeat: Infinity, duration: 2 }}
           className="absolute bottom-10 flex flex-col items-center gap-2 text-gray-600"
         >
-          <span className="text-[10px] uppercase tracking-widest">Conheça a inspiração da nossa IA</span>
+          <span className="text-[10px] uppercase tracking-widest">Arraste pra baixo e conheça a inspiração da nossa IA</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>

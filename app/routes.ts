@@ -2,9 +2,12 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [index("routes/index.tsx"),
 
-    route("/enter", "routes/page/start.page.tsx"),
-    route("/login", "routes/services/login.service.tsx"),
-    route("/subscribe", "routes/services/subscribe.service.tsx"),
-    route("/chat", "routes/services/chat.service.tsx"),
+    route("/enter", "routes/page/startPage.tsx"),
+    route("/login", "routes/services/loginService.tsx"),
+    route("/subscribe", "routes/services/subscribeService.tsx"),
+    route("/chat", "routes/services/chatService.tsx"),
+    route("/perfil", "routes/services/profileService.tsx")
 
 ] satisfies RouteConfig;
+
+
