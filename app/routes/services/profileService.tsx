@@ -60,11 +60,7 @@ export default function Perfil() {
         }
 
 
-        const handleLogout = window.location.href = "http://localhost:5174/chat?user=logout";
-
-        const uri = new URL(handleLogout);
-
-        uri.searchParams.delete(data);
+        navigate("/")
 
         console.log("Conta deletada com sucesso:", data); } catch (err) { 
         console.log("Ocorreu algum erro ao deletar conta", err);

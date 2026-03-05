@@ -29,12 +29,15 @@ type Pages = {
   "/perfil": {
     params: {};
   };
+  "/trocar-senha": {
+    params: {};
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/enter" | "/login" | "/subscribe" | "/chat" | "/perfil";
+    page: "/" | "/enter" | "/login" | "/subscribe" | "/chat" | "/perfil" | "/trocar-senha";
   };
   "routes/index.tsx": {
     id: "routes/index";
@@ -60,6 +63,10 @@ type RouteFiles = {
     id: "routes/services/profileService";
     page: "/perfil";
   };
+  "routes/services/changePasswordService.tsx": {
+    id: "routes/services/changePasswordService";
+    page: "/trocar-senha";
+  };
 };
 
 type RouteModules = {
@@ -70,4 +77,5 @@ type RouteModules = {
   "routes/services/subscribeService": typeof import("./app/routes/services/subscribeService.tsx");
   "routes/services/chatService": typeof import("./app/routes/services/chatService.tsx");
   "routes/services/profileService": typeof import("./app/routes/services/profileService.tsx");
+  "routes/services/changePasswordService": typeof import("./app/routes/services/changePasswordService.tsx");
 };

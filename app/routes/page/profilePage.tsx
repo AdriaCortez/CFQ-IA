@@ -87,7 +87,7 @@ export default function Profile (config: any) {
               
               <div className="space-y-2">
                 <button 
-                  onClick={() => navigate("/trocarsenha")}
+                  onClick={() => navigate("/trocar-senha")}
                   className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:bg-blue-600/10 hover:text-blue-400 rounded-2xl transition-all border border-transparent hover:border-blue-900/50"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">

@@ -33,10 +33,9 @@ export default function AlterarSenha() {
     try {
       const apiTrocarSenha = await fetch("http://localhost:3700/trocarsenha", {
         method: "PUT",
-
+        credentials: "include",
         headers: { 
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
 
         body: JSON.stringify({ senhaatual: senhaatual, confirmarsenha: confirmarsenha, novasenha: novasenha })

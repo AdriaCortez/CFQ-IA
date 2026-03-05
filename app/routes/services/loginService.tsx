@@ -48,6 +48,8 @@ export default function Enter() {
     ); //fecha API LOGIN
 
      if(!apiLogin.ok) {
+
+      alert("Credenciais inválidas. Crie uma conta ou tente novamente")
       return;
      }
 
